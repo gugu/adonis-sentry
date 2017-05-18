@@ -12,8 +12,8 @@ class Sentry {
     }).install()
   }
 
-  capture (e) {
-    this.eventId = Raven.captureException(e, (error, eventId) => {
+  capture (e, options) {
+    this.eventId = Raven.captureException(e, options, (error, eventId) => {
       if (error) {
         console.error('Failed to send captured exception to Sentry')
       } else {
